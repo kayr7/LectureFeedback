@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vorlesungen</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
+<body>
+    <h1>Entities Overview</h1>
+    <ul>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Vorlesung</th>
+                    <th>Feedback Page</th>
+                    <th>QR Code Page</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td>{{ entity.name }}</td>
+                        <td><a href="{% url 'feedback' entity.id %}">Feedback Page</a></td>
+                        <td><a href="{% url 'entity_qr_code' entity.id %}">QR Code</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </ul>
+</body>
+</html>
+
+

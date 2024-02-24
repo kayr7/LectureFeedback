@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
+<body>
+   <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    <div>
+        <label><h4>{{ field.label }}</h4></label>
+        {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text }}</p>
+        {% endif %}
+        {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
